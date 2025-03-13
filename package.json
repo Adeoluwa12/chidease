@@ -2,12 +2,12 @@
   "name": "cd-bot",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "build": "tsc",
-    "start": "node dist/app.js",
-   "dev": "NODE_OPTIONS='--max-old-space-size=1024' ts-node src/app.ts",
-    "postinstall": "npx puppeteer browsers install chrome"
-  },
+ "scripts": {
+  "build": "tsc",
+  "start": "node dist/app.js",
+  "dev": "NODE_OPTIONS='--max-old-space-size=1024' ts-node src/app.ts",
+  "postinstall": "npx puppeteer install"
+}
   "keywords": [],
   "author": "",
   "license": "ISC",
