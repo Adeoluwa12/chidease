@@ -8,7 +8,7 @@ import { setupBot, loginToAvaility } from "./services/bot"; // Import bot functi
 config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 7008;
 
 // Middleware
 app.use(express.json());
@@ -58,5 +58,9 @@ mongoose
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+setInterval(() => {
+  console.log("Memory Usage:", process.memoryUsage());
+}, 5000);
 
 export default app;
