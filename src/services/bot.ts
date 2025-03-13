@@ -6,18 +6,7 @@ import { sendEmail } from "./email"
 import { sendSMS } from "./sms"
 import { Referral } from "../models/referrals"
 import { Notification } from "../models/notification"
-import { execSync } from "child_process";
 
-const getChromePath = (): string => {
-  try {
-    return execSync("find /opt/render/.cache/puppeteer -name chrome -type f")
-      .toString()
-      .trim();
-  } catch (error) {
-    console.error("❌ Chrome path not found. Ensure Chrome is installed.");
-    throw error;
-  }
-};
 
 
 config()
@@ -102,9 +91,7 @@ export async function closeBrowser(): Promise<void> {
 export async function setupBot(): Promise<void> {
   try {
     browser = await puppeteer.launch({
-      executablePath: getChromePath(),
-      headless: true,
-      // headless: "new" as any,
+      headless: "new" as any,
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
