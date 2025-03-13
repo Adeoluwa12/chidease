@@ -5,8 +5,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/app.js",
-    "dev": "ts-node src/app.ts",
-    "seed": "ts-node src/scripts/seed-backup-codes.ts"
+  "dev": "NODE_OPTIONS='--max-old-space-size=1024' ts-node src/app.ts",
   },
   "keywords": [],
   "author": "",
