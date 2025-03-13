@@ -6,12 +6,7 @@ import { sendEmail } from "./email"
 import { sendSMS } from "./sms"
 import { Referral } from "../models/referrals"
 import { Notification } from "../models/notification"
-import { execSync } from "child_process";
 
-// Dynamically find the installed Chrome path
-const chromePath = execSync("ls /opt/render/.cache/puppeteer/chrome/linux-*/chrome")
-  .toString()
-  .trim();
 
 config()
 
@@ -95,7 +90,7 @@ export async function closeBrowser(): Promise<void> {
 export async function setupBot(): Promise<void> {
   try {
     browser = await puppeteer.launch({
-      executablePath: chromePath,
+      executablePath: "/opt/render/.cache/puppeteer/chrome/linux-133.0.6943.141/chrome-linux64/chrome",  
       headless: true,
       // headless: "new" as any,
       args: [
