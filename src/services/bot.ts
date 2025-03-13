@@ -9,6 +9,7 @@ import { Notification } from "../models/notification"
 
 
 
+
 config()
 
 // Fix the type error by making page nullable
@@ -19,6 +20,8 @@ let lastCheckTime = new Date()
 const AVAILITY_URL = "https://apps.availity.com"
 const LOGIN_URL = "https://apps.availity.com/availity/web/public.elegant.login"
 const REFERRALS_API_URL = "https://apps.availity.com/api/v1/proxy/anthem/provconn/v1/carecentral/ltss/referral/details"
+
+const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH || "/usr/bin/google-chrome-stable";
 
 interface ReferralResponse {
   effectiveDate: string
@@ -91,6 +94,7 @@ export async function closeBrowser(): Promise<void> {
 export async function setupBot(): Promise<void> {
   try {
     browser = await puppeteer.launch({
+        executablePath,
       headless: "new" as any,
       args: [
         "--no-sandbox",
